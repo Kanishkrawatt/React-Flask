@@ -44,6 +44,7 @@ npm start
 - Run the backend server
 
 ```sh
+cd server
 # create a virtual environment
 python3 -m venv .venv # Linux
 py -3 -m venv .venv # Windows
