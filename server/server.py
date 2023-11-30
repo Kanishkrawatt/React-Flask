@@ -1,10 +1,12 @@
 from flask import Flask
+from flask_cors import CORS
 from markupsafe import escape
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/")
@@ -17,8 +19,6 @@ def recommend_coursera(subject, difficulty):
     subject = escape(subject.replace("-", " "))
     difficulty = escape(difficulty.capitalize())
     data = get_recommendations_coursera(subject=subject, course_difficulty=difficulty)
-    if len(data) == 0:
-        return {"data": "No courses found!"}
     return {"data": data}
 
 
@@ -27,8 +27,6 @@ def recommend_udemy(subject, difficulty):
     subject = escape(subject.replace("-", " "))
     difficulty = escape(difficulty.replace("-", " "))
     data = get_recommendations_udemy(subject=subject, course_difficulty=difficulty)
-    if len(data) == 0:
-        return {"data": "No courses found!"}
     return {"data": data}
 
 
