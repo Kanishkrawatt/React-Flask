@@ -69,7 +69,7 @@ def get_recommendations_coursera(subject="AI", course_difficulty="Intermediate")
     weighted_scores = sorted(weighted_scores, key=lambda x: x[1], reverse=True)
 
     arr = []
-    for i in weighted_scores[1:6]:
+    for i in weighted_scores[0:11]:
         arr.append(
             {
                 "course_title": df_coursera["course_title"][i[0]],
@@ -114,7 +114,7 @@ def get_recommendations_udemy(subject="AI", course_difficulty="Intermediate"):
     weighted_scores = sorted(avg_similarity_scores, key=lambda x: x[1], reverse=True)
 
     arr = []
-    for i in weighted_scores[1:6]:  # Exclude the input course itself
+    for i in weighted_scores[0:11]:  # Exclude the input course itself
         arr.append(
             {
                 "course_title": df_udemy["course_title"][i[0]],
